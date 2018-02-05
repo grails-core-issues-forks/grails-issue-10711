@@ -3,14 +3,21 @@ package issue10711
 class UrlMappings {
 
     static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
+
+        '/tickets'(resources: 'ticket') {
+            collection {
+                "/history/${id}"(controller: 'ticket', action:'history', method: 'GET')
             }
         }
 
-        "/"(view:"/index")
-        "500"(view:'/error')
-        "404"(view:'/notFound')
+//        "/$controller/$action?/$id?(.$format)?"{
+//            constraints {
+//                // apply constraints here
+//            }
+//        }
+//
+//        "/"(view:"/index")
+//        "500"(view:'/error')
+//        "404"(view:'/notFound')
     }
 }
